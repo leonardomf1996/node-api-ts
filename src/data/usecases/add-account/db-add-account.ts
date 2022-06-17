@@ -12,9 +12,9 @@ export class DbAddAccount implements AddAccount {
       No método abaixo, o assign() cria um obj novo ({}), atribui os dados de 
          accountData nesse obj novo e, por fim, sobrescreve password com hashedPassword
       */
-      await this.addAccountRepository.add(Object.assign({}, accountData, {
+      const account = await this.addAccountRepository.add(Object.assign({}, accountData, {
          password: hashedPassword
       }))
-      return new Promise(resolve => resolve(null))
+      return new Promise(resolve => resolve(account))
    }
 }
